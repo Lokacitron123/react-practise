@@ -1,4 +1,4 @@
-import CORE_CONCEPTS from "../../lib/data.ts";
+import { CORE_CONCEPTS } from "../../lib/data.ts";
 import ConceptCard from "./ConceptCard.tsx";
 
 const CoreConceptList = () => {
