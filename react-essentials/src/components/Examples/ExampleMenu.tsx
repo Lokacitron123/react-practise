@@ -6,7 +6,7 @@ import ExampleContent from "./ExampleContent";
 const ExampleMenu = () => {
   const [selectedTopic, setActiveTopic] = useState<
     "components" | "jsx" | "props" | "state"
-  >("components");
+  >();
 
   return (
     <>

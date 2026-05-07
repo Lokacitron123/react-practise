@@ -5,19 +5,25 @@ import "./Example.css";
 type ExampleKey = keyof typeof EXAMPLES;
 
 interface ExampleContentProps {
-  topic: ExampleKey;
+  topic?: ExampleKey;
 }
 
 const ExampleContent = ({ topic }: ExampleContentProps) => {
-  const example = EXAMPLES[topic];
+  const example = topic ? EXAMPLES[topic] : undefined;
 
   return (
     <div id="tab-content">
-      <h3>{example.title}</h3>
-      <p>{example.description}</p>
-      <pre>
-        <code>{example.code}</code>
-      </pre>
+      {example ? (
+        <>
+          <h3>{example.title}</h3>
+          <p>{example.description}</p>
+          <pre>
+            <code>{example.code}</code>
+          </pre>
+        </>
+      ) : (
+        <h3>Please select a topic</h3>
+      )}
     </div>
   );
 };
