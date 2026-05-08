@@ -1,14 +1,19 @@
 import Header from "./components/Header/Header";
-import ConceptSection from "./components/Concept/ConceptSection";
-import ExampleSection from "./components/Examples/ExampleSection";
+import Section from "./components/Section";
+import CoreConceptList from "./components/Concept/CoreConceptList";
+import ExampleMenu from "./components/Examples/ExampleMenu";
 
 function App() {
   return (
     <>
       <Header />
       <main>
-        <ConceptSection />
-        <ExampleSection />
+        <Section id="core-concepts" title={"React Examples"}>
+          <CoreConceptList />
+        </Section>
+        <Section id="examples" title={"React Core Concepts"}>
+          <ExampleMenu />
+        </Section>
       </main>
     </>
   );

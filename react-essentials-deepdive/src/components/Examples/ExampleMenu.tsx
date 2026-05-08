@@ -1,6 +1,6 @@
+import "./Example.css";
 import { useState } from "react";
 import TabButton from "../Buttons/TabButton";
-import "./Example.css";
 import ExampleContent from "./ExampleContent";
 
 const ExampleMenu = () => {
