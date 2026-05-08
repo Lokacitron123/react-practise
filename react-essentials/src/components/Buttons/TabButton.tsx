@@ -2,11 +2,18 @@ import React from "react";
 
 interface TabButtonProps {
   children: React.ReactNode;
-  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  isSelected?: boolean;
+  onSelect?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
-const TabButton = ({ children, onClick }: TabButtonProps) => {
-  return <button onClick={onClick}>{children}</button>;
+const TabButton = ({ children, isSelected, onSelect }: TabButtonProps) => {
+  return (
+    <li>
+      <button className={isSelected ? "active" : ""} onClick={onSelect}>
+        {children}
+      </button>
+    </li>
+  );
 };
 
 export default TabButton;

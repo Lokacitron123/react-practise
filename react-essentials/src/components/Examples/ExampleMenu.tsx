@@ -4,19 +4,38 @@ import "./Example.css";
 import ExampleContent from "./ExampleContent";
 
 const ExampleMenu = () => {
-  const [selectedTopic, setActiveTopic] = useState<
+  // Using the same useState as source of truth for CSS
+  const [selectedTopic, setSelectedTopic] = useState<
     "components" | "jsx" | "props" | "state"
   >();
 
   return (
     <>
       <menu>
-        <TabButton onClick={() => setActiveTopic("components")}>
+        <TabButton
+          isSelected={selectedTopic === "components"}
+          onSelect={() => setSelectedTopic("components")}
+        >
           Components
         </TabButton>
-        <TabButton onClick={() => setActiveTopic("jsx")}>JSX</TabButton>
-        <TabButton onClick={() => setActiveTopic("props")}>Props</TabButton>
-        <TabButton onClick={() => setActiveTopic("state")}>State</TabButton>
+        <TabButton
+          isSelected={selectedTopic === "jsx"}
+          onSelect={() => setSelectedTopic("jsx")}
+        >
+          JSX
+        </TabButton>
+        <TabButton
+          isSelected={selectedTopic === "props"}
+          onSelect={() => setSelectedTopic("props")}
+        >
+          Props
+        </TabButton>
+        <TabButton
+          isSelected={selectedTopic === "state"}
+          onSelect={() => setSelectedTopic("state")}
+        >
+          State
+        </TabButton>
       </menu>
       <ExampleContent topic={selectedTopic} />
     </>
