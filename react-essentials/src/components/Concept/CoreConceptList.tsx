@@ -1,3 +1,4 @@
+import "./Concept.css";
 import { CORE_CONCEPTS } from "../../lib/data.ts";
 import ConceptCard from "./ConceptCard.tsx";
 
@@ -7,10 +8,12 @@ const CoreConceptList = () => {
       {CORE_CONCEPTS.map((concept, i) => (
         <ConceptCard
           key={i}
-          img={concept.img}
-          imgAlt={concept.imgAlt}
-          title={concept.title}
-          description={concept.description}
+          // Spread in the single concept item or pass it individually
+          {...concept}
+          // img={concept.img}
+          // imgAlt={concept.imgAlt}
+          // title={concept.title}
+          // description={concept.description}
         />
       ))}
     </ul>
