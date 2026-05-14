@@ -7,10 +7,10 @@ type Props = {
 };
 
 const Tabs = ({ children, buttons, buttonsContainer }: Props) => {
-  // Using the same useState as source of truth for CSS
+  // This will tell React to look for an existing html element if a string value is passed like menu
+  //  Or render a Component if passed as a value
 
   const ButtonsContainer = buttonsContainer;
-
   return (
     <>
       <ButtonsContainer>{buttons}</ButtonsContainer>
