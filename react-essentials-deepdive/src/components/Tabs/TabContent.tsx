@@ -8,7 +8,7 @@ interface ExampleContentProps {
   topic?: ExampleKey;
 }
 
-const ExampleContent = ({ topic }: ExampleContentProps) => {
+const TabContent = ({ topic }: ExampleContentProps) => {
   const example = topic ? EXAMPLES[topic] : undefined;
 
   return (
@@ -28,4 +28,4 @@ const ExampleContent = ({ topic }: ExampleContentProps) => {
   );
 };
 
-export default ExampleContent;
+export default TabContent;
