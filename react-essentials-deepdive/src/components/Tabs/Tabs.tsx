@@ -8,7 +8,7 @@ type Props = {
 
 const Tabs = ({ children, buttons, buttonsContainer }: Props) => {
   // This will tell React to look for an existing html element if a string value is passed like menu
-  //  Or render a Component if passed as a value
+  //  Or render a custom component if passed as a value, will invoke that component function
 
   const ButtonsContainer = buttonsContainer;
   return (
