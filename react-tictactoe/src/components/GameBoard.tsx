@@ -1,4 +1,10 @@
 import { useState } from "react";
+import type { PlayerSymbol } from "../App";
+
+type GameBoardProps = {
+  activePlayer: PlayerSymbol;
+  setActivePlayer: React.Dispatch<React.SetStateAction<PlayerSymbol>>;
+};
 
 type CellValue = "X" | "O" | null;
 
@@ -15,20 +21,22 @@ const initialGameBoard: GameBoardType = [
   [null, null, null],
 ];
 
-const GameBoard = () => {
+const GameBoard = ({ activePlayer, setActivePlayer }: GameBoardProps) => {
   const [gameBoard, setGameBoard] = useState<GameBoardType>(initialGameBoard);
 
   // Update object & arrays in an immutable way. E.g. make a (deep) copy first is good practice
   const handleSelectSquare = (rowIndex: number, colIndex: number) => {
     setGameBoard((prevGameBoard) => {
-      const updatedGameBoard = prevGameBoard.map((innerArray) => [
-        ...innerArray,
+      const updatedGameBoard = prevGameBoard.map((row) => [
+        ...row,
       ]) as GameBoardType;
 
-      updatedGameBoard[rowIndex][colIndex] = "X";
+      updatedGameBoard[rowIndex][colIndex] = activePlayer;
 
       return updatedGameBoard;
     });
+
+    setActivePlayer((prev) => (prev === "X" ? "O" : "X"));
   };
 
   return (
