@@ -1,33 +1,16 @@
-import type { GameBoardType, PlayerSymbol } from "../App";
+// GameBoard.tsx
+import type { GameBoardType } from "../App";
 
 type GameBoardProps = {
-  activePlayer: PlayerSymbol;
-  setActivePlayer: React.Dispatch<React.SetStateAction<PlayerSymbol>>;
   gameBoard: GameBoardType;
-  setGameBoard: React.Dispatch<React.SetStateAction<GameBoardType>>;
+  onSelectSquare: (rowIndex: number, colIndex: number) => void;
 };
 
 const GameBoard = ({
-  activePlayer,
-  setActivePlayer,
   gameBoard,
-  setGameBoard,
+
+  onSelectSquare,
 }: GameBoardProps) => {
-  // Update object & arrays in an immutable way. E.g. make a (deep) copy first is good practice
-  const handleSelectSquare = (rowIndex: number, colIndex: number) => {
-    setGameBoard((prevGameBoard) => {
-      const updatedGameBoard = prevGameBoard.map((row) => [
-        ...row,
-      ]) as GameBoardType;
-
-      updatedGameBoard[rowIndex][colIndex] = activePlayer;
-
-      return updatedGameBoard;
-    });
-
-    setActivePlayer((prev) => (prev === "X" ? "O" : "X"));
-  };
-
   return (
     <ol id="game-board">
       {gameBoard.map((row, rowIndex) => (
@@ -35,7 +18,10 @@ const GameBoard = ({
           <ol>
             {row.map((playerSymbol, colIndex) => (
               <li key={colIndex}>
-                <button onClick={() => handleSelectSquare(rowIndex, colIndex)}>
+                <button
+                  onClick={() => onSelectSquare(rowIndex, colIndex)}
+                  disabled={!!playerSymbol} // Optional: disable if already clicked
+                >
                   {playerSymbol}
                 </button>
               </li>
